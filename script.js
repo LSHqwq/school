@@ -28,7 +28,30 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 表单现在通过Formspree直接提交，不需要JavaScript处理
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            if (!name || !email || !message) {
+                alert('请填写所有必填字段');
+                return;
+            }
+
+            // 使用mailto链接打开邮件客户端
+            const subject = encodeURIComponent('君兰中学创客空间留言');
+            const body = encodeURIComponent(`姓名: ${name}\n邮箱: ${email}\n留言内容:\n${message}`);
+            const mailtoLink = `mailto:1784627101@qq.com?subject=${subject}&body=${body}`;
+            
+            window.location.href = mailtoLink;
+            alert('正在打开邮件客户端，请发送邮件完成留言。');
+            contactForm.reset();
+        });
+    }
 
     const resourceCards = document.querySelectorAll('.resource-card');
     resourceCards.forEach(card => {
