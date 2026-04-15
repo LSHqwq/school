@@ -28,25 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    const contactForm = document.querySelector('.contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const message = formData.get('message');
-
-            if (!name || !email || !message) {
-                alert('请填写所有必填字段');
-                return;
-            }
-
-            alert('留言已发送！我们会尽快回复您。');
-            this.reset();
-        });
-    }
+    // 表单现在通过Formspree直接提交，不需要JavaScript处理
 
     const resourceCards = document.querySelectorAll('.resource-card');
     resourceCards.forEach(card => {
