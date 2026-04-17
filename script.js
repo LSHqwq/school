@@ -42,13 +42,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            // 使用mailto链接打开邮件客户端
+            // 打开QQ邮箱网页版
             const subject = encodeURIComponent('君兰中学创客空间留言');
             const body = encodeURIComponent(`姓名: ${name}\n邮箱: ${email}\n留言内容:\n${message}`);
-            const mailtoLink = `mailto:1784627101@qq.com?subject=${subject}&body=${body}`;
+            const qqMailUrl = `https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=1784627101@qq.com&subject=${subject}&body=${body}`;
             
-            window.location.href = mailtoLink;
-            alert('正在打开邮件客户端，请发送邮件完成留言。');
+            window.open(qqMailUrl, '_blank');
+            alert('正在打开QQ邮箱，请发送邮件完成留言。');
             contactForm.reset();
         });
     }
